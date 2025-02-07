@@ -3,11 +3,12 @@ const app = express();
 const PORT = 8000;
 require('dotenv').config();
 const {dbConnection} = require('./config/config');
-const routes = require('./routes');
+const router = require('./routes');
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/', routes);
+app.use('/', router);
 
 dbConnection();
 
